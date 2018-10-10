@@ -1,0 +1,20 @@
+ DATA SEGMENT
+    A DW 0100H,0200H,0300H,0300H
+    SUM DW ?
+  DATA ENDS
+  CODE SEGMENT
+    ASSUME:CS: CODE DS:DATA
+    START:
+    MOV AX,DATA
+    MOV DS,AX
+    MOV CX,4
+    MOV AX,0
+    MOV SI,0
+    LABEL1: ADD AL,BYTE PTR A[SI]  
+           
+            ADC AH,BYTE PTR A[SI+1]
+            ADD SI,2
+           LOOP LABEL1
+           MOV SUM,AX 
+    CODE ENDS
+  END START

@@ -1,0 +1,23 @@
+    DATA SEGMENT
+    A DD 01000100H,02000200H,30003000H,03000300H
+    SUM DD ?
+  DATA ENDS
+  CODE SEGMENT
+    ASSUME:CS: CODE DS:DATA
+    START:
+    MOV AX,DATA
+    MOV DS,AX
+    MOV CX,4
+    MOV AX,0 
+    MOV DX,0
+    MOV SI,0
+    LABEL1: ADD AL,BYTE PTR A[SI]  
+            ADC AH,BYTE PTR A[SI+1]
+            ADC DL,BYTE PTR A[SI+2]   
+            ADC DH,BYTE PTR A[SI+3]
+            ADD SI,04H
+           LOOP LABEL1
+           MOV SUM,AX
+           MOV SUM+2,DX 
+    CODE ENDS
+  END START

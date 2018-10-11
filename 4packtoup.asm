@@ -7,7 +7,18 @@ CODE SEGMENT
     MOV AX,DATA
     MOV DS,AX
     MOV SI,0H
-    MOV CX,04H
+    MOV CX,02H
+    MOV DI,0H
+    LABEL1:
+    MOV AL,BYTE PTR P[SI]
+    MOV AH,0H
+    SHL AX,04H
+    SHR AL,04H
+    INC SI
+    ADD DI,02H
+    MOV ARR[DI],AX
+    LOOP LABEL1
+    
     CODE ENDS
 END START
 

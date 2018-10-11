@@ -1,0 +1,20 @@
+DATA SEGMENT
+    ARR DB 8H,2H,3H,4H,5H,6H
+    NUM DB 4H
+    DATA ENDS
+CODE SEGMENT
+    
+    START:
+    MOV AX,DATA
+    MOV DS,AX
+    MOV CX,06H 
+    MOV SI,0H   
+    MOV AL,NUM
+    LABEL1:
+    CMP AL,ARR[SI]
+    INC SI
+    LOOPNE LABEL1    
+   
+    CODE ENDS
+END SEGMENT
+    

@@ -15,7 +15,7 @@ CODE SEGMENT
     SHL AX,04H
     SHR AL,04H
     INC SI
-    ADD DI,02H
+    MOV DI,02H
     MOV ARR[DI],AX
     LOOP LABEL1
     

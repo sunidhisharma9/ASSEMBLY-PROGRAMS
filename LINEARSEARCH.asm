@@ -1,20 +1,29 @@
 DATA SEGMENT
-    ARR DB 8H,2H,3H,4H,5H,6H
-    NUM DB 4H
+    ARR DB 08H,02H,03H,04H,05H,06H
+    NUM DB 4H 
+    FLAG DB 0H
     DATA ENDS
 CODE SEGMENT
     
     START:
     MOV AX,DATA
-    MOV DS,AX
-    MOV CX,06H 
-    MOV SI,0H   
-    MOV AL,NUM
+    MOV DS,AX 
+    
+    MOV CX,06 
+    MOV SI,00   
+    MOV AL,NUM 
+    
     LABEL1:
-    CMP AL,ARR[SI]
+    CMP AL,ARR+SI
+    JZ LABEL2
     INC SI
-    LOOPNE LABEL1    
+    LOOP LABEL1  
+    
+    HLT 
+    
+    LABEL2: MOV FLAG,01H 
+            INC SI
    
     CODE ENDS
-END SEGMENT
+END START
     
